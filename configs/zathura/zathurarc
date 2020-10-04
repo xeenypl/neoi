@@ -1,0 +1,9 @@
+set page-padding 1
+
+map n scroll left
+map e scroll down
+map o scroll up
+map i scroll right
+
+map k search forward
+map K search backward

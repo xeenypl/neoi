@@ -1,0 +1,23 @@
+#!/bin/sh
+
+walloptions="--zoom"
+
+case "$1" in
+  "C-w")
+    while read file; do
+      cp "$file" ~/.config/wallpapers/
+    done
+    ;;
+  "C-s")
+    NAME="$(echo | rofi -dmenu)"
+    [ -e "$NAME" ] || mkdir "$NAME"
+    while read file; do
+      mv "$file" "$NAME"
+    done
+    ;;
+  "C-d")
+    while read file; do
+      rm "$file"
+    done
+    ;;
+esac

@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+
+if ! [ -z "$1" ]; then
+  if [ -e ~/.config/palylist.sh ]; then
+    echo "  '$(readlink -e "$1")'\\" >> ~/.config/palylist.sh
+  else 
+    echo "#!/usr/bin/env sh"             >>  ~/.config/palylist.sh
+    echo " play '$(readlink -e "$1")'\\" >> ~/.config/palylist.sh
+  fi
+fi

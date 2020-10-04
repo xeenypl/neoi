@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/xeeny/Microsoft leaked source code archive_2020-09-24'
+let g:netrw_dirhist_3='/home/xeeny/.config/ncmpcpp'
+let g:netrw_dirhist_2='/home/xeeny/work/micro/example'
+let g:netrw_dirhist_1='/home/xeeny/work/xen/xen-concept-example'
+let g:netrw_dirhist_0='/home/xeeny/work/uasm/src'
+let g:netrw_dirhist_9='/home/xeeny/work/xbase/cat'
+let g:netrw_dirhist_8='/home/xeeny/storage/video/!now'
+let g:netrw_dirhist_7='/home/xeeny/work/micro/src'
+let g:netrw_dirhist_6='/home/xeeny/work/zigbf/src'
+let g:netrw_dirhist_5='/home/xeeny/work/dotfiles'
