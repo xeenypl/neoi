@@ -1,0 +1,39 @@
+#!/usr/bin/env fish
+# vim:ft=fish
+
+# to setup client you just need set $WALL_HOST and $WALL_USER 
+# to ip and user name of your server:
+# ```
+# set WALL_HOST "Put Your IP Here"
+# set WALL_USER "xeeny"
+# ```
+
+set wallfolder ~/.config/wallpapers/
+set wall       ~/.config/wallpaper
+
+set oldwall ""
+
+if ! set -q $WALL_HOST
+    if [ "$argv[1]" = "next" ]
+        ssh $WALL_USER@$WALL_HOST "killall sleep"
+    else
+        while true
+            xwallpaper --zoom $wall
+            set md5wall (ssh $WALL_USER@$WALL_HOST "md5sum $wall" | cut -d ' ' -f 1) 
+            if ! [ $oldwall = $md5wall ]
+                scp $WALL_USER@$WALL_HOST:$wall $wall
+                set oldwall $md5wall
+            end
+        end
+    end
+else
+    if [ "$argv[1]" = "next" ]
+        killall sleep
+    else
+        while true 
+            cp (find $wallfolder -type f | shuf -n 1) $wall
+            xwallpaper --zoom $wall
+            sleep 600
+        end
+    end
+end

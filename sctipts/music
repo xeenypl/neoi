@@ -1,0 +1,49 @@
+#!/usr/bin/env fish
+#
+# vim:ft=fish
+
+if [ "$argv[1]" = 'toggle' ]
+    if test -e ~/.local/currnt-player
+    and playerctl --list-all | grep (cat ~/.local/currnt-player) > /dev/null
+        playerctl --player (cat ~/.local/currnt-player) play-pause
+    else
+        playerctl play-pause
+    end
+else if [ "$argv[1]" = 'play' ]
+    if test -e ~/.local/currnt-player 
+    and playerctl --list-all | grep (cat ~/.local/currnt-player) > /dev/null
+        playerctl --player (cat ~/.local/currnt-player) play 
+    else
+        playerctl play
+    end
+else if [ "$argv[1]" = 'pause' ]
+    if test -e ~/.local/currnt-player
+    and playerctl --list-all | grep (cat ~/.local/currnt-player) > /dev/null
+        playerctl --player (cat ~/.local/currnt-player) pause
+    else
+        playerctl pause
+    end
+else if [ "$argv[1]" = 'next' ]
+    if test -e ~/.local/currnt-player
+    and playerctl --list-all | grep (cat ~/.local/currnt-player) > /dev/null
+        playerctl --player (cat ~/.local/currnt-player) next
+    else
+        playerctl next
+    end
+else if [ "$argv[1]" = 'prev' ]
+    if test -e ~/.local/currnt-player
+    and playerctl --list-all | grep (cat ~/.local/currnt-player) > /dev/null
+        playerctl --player (cat ~/.local/currnt-player) previous
+    else
+        playerctl previous
+    end
+else if [ "$argv[1]" = 'switch' ]
+    if ! set -q $DMENU
+        playerctl --list-all | eval $DMENU > ~/.local/currnt-player
+    else if which rofi > /dev/null
+        playerctl --list-all | rofi -dmenu > ~/.local/currnt-player
+    else if which dmenu > /dev/null
+        playerctl --list-all | dmenu > ~/.local/currnt-player
+    end
+end
+
