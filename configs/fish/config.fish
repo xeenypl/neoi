@@ -19,6 +19,13 @@ set SHELL "fish"
 set TERMINAL "alacritty"
 set PAGER "less"
 
+bind -m default n backward-char
+bind -m default N beginning-of-line
+bind -m default e down-line
+bind -m default o up-line
+bind -m default i forward-char
+bind -m default I end-of-line
+
 # seting up prompt
 function fish_prompt
     set error $status
